@@ -1,0 +1,12 @@
+# TEST FIXTURE. Not a reviewed Atlas record.
+id: mech.fixture_finger
+schema_version: 0.2.0
+updated_at: 2026-11-07
+entity_type: structural_principle
+canonical_name: Fixture compliant finger
+families: [F12, F16]
+functions: [conform_to_shape]
+summary: Fixture summary.
+realized_by:
+  - { kind: brick, id: gripper.fixture_finger }
+  - { kind: external_reference, url: "https://example.org/fixture-finger" }

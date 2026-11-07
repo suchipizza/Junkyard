@@ -1,0 +1,11 @@
+# expect: value 0 is not allowed; use null for unknown values
+id: part.servo.fixture_bad
+schema_version: 0.2.0
+updated_at: '2026-11-07'
+name: Fixture servo (fictional)
+class: hobby_servo_9g
+specs:
+  body_l_mm:
+    value: 0
+    source: null
+    verification: unverified

@@ -1,0 +1,17 @@
+# expect: at least 1 item
+id: mech.fixture_bad
+schema_version: 0.2.0
+updated_at: '2026-11-07'
+entity_type: mechanism_pattern
+canonical_name: Fixture
+families:
+- F03
+functions:
+- rotary_joint_limited
+summary: Fixture.
+realized_by:
+- kind: none
+alternatives:
+- target: mech.other
+  context: x
+  tradeoffs: []

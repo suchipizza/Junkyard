@@ -1,0 +1,31 @@
+# expect: id prefix 'joint' does not match category 'gripper'
+id: joint.fixture_pin
+schema_version: 0.2.0
+updated_at: '2026-11-07'
+name: Fixture pin joint
+category: gripper
+stage: experimental
+summary: Test fixture.
+functions:
+- rotary_joint_limited
+mdi:
+  realizes: mech.fixture_pin
+difficulty: beginner
+params:
+- name: pin_d_mm
+  type: float
+  unit: mm
+  default: 5
+  range:
+  - 3
+  - 8
+outputs:
+- link_a
+- link_b
+visuals:
+  hero_params:
+  - pin_d_mm
+provenance:
+  origin: original
+  authors:
+  - Junkyard contributors

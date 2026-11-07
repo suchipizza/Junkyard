@@ -1,0 +1,31 @@
+# TEST FIXTURE. A fictional servo, not a real component. The one non-null
+# value cites the fixture README as its "source" so I1 and ctx.spec() can be
+# tested without inventing real-world dimensions.
+id: part.servo.fixture_micro
+schema_version: 0.2.0
+updated_at: 2026-11-07
+name: Fixture micro servo (fictional, tests only)
+class: hobby_servo_9g
+aliases: [fixture servo]
+specs:
+  body_l_mm:         { value: null, source: null, verification: unverified }
+  body_w_mm:         { value: null, source: null, verification: unverified }
+  tab_hole_pitch_mm: { value: null, source: null, verification: unverified }
+  spline_teeth:      { value: null, source: null, verification: unverified }
+  stall_torque_nm:   { value: null, at_voltage_v: null, source: null, verification: unverified }
+  mass_g:
+    value: 1.0
+    source:
+      kind: reference_drawing
+      title: Junkyard test fixture (fictional part)
+      location: tests/fixtures/README.md
+    verification: unverified
+variance_note: Fictional part for tests.
+ports:
+  - name: body
+    type: servo_body_mount
+    gender: male
+    params: { servo_class: hobby_servo_9g, body_l_mm: null, body_w_mm: null }
+    frame: { origin_mm: [0, 0, 0], z_axis: [0, 0, 1], x_axis: [1, 0, 0] }
+datasheets: [{ url: null, title: null, retrieved: null }]
+where_to_buy: []
