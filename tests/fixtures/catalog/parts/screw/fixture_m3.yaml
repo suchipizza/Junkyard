@@ -1,0 +1,8 @@
+# TEST FIXTURE. A fictional screw record with every spec unknown.
+id: part.screw.fixture_m3
+schema_version: 0.2.0
+updated_at: 2026-11-07
+name: Fixture M3 screw (fictional, tests only)
+specs:
+  length_mm: { value: null, source: null, verification: unverified }
+  head_d_mm: { value: null, source: null, verification: unverified }

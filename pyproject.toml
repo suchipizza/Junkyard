@@ -1,0 +1,52 @@
+[project]
+name = "junkyard-robotics"
+version = "0.1.0.dev0"
+description = "Parametric, agent-ready mechanical parts for robots (bricks), with part specs and a mechanism atlas."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE", "LICENSE-DATA"]
+authors = [{ name = "Junkyard contributors" }]
+keywords = ["robotics", "cad", "build123d", "parametric", "mcp", "3d-printing"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering",
+]
+# M1 needs only schemas and loaders. build123d (M2), typer and mcp (M4) are
+# added in the milestones that use them.
+dependencies = [
+  "pydantic>=2.7,<3",
+  "pyyaml>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/suchipizza/Junkyard"
+Repository = "https://github.com/suchipizza/Junkyard"
+
+[dependency-groups]
+dev = [
+  "pytest>=8",
+  "ruff>=0.6",
+]
+
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/junkyard"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["docs", "tests/fixtures/generators"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]  # allow "·" and "—" in text

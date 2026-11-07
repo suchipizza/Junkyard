@@ -1,0 +1,42 @@
+# Actuator classes (PRD 5.6). Classes group parts that share a mounting
+# interface closely enough that one brick can accept any part in the class.
+# Dimensions belong in part records, never here.
+schema_version: 0.2.0
+updated_at: 2026-11-07
+actuator_classes:
+  - id: hobby_servo_9g
+    label: Micro hobby servo (9 g class)
+    kind: servo
+    description: Small PWM hobby servos in the SG90 / MG90S size family.
+  - id: hobby_servo_standard
+    label: Standard hobby servo
+    kind: servo
+    description: Standard-size PWM hobby servos in the MG996R size family.
+  - id: hobby_servo_high_torque
+    label: High-torque hobby servo
+    kind: servo
+    description: Standard-footprint servos sold for high torque, such as 20 kg and 35 kg classes.
+  - id: nema17_stepper
+    label: NEMA 17 stepper
+    kind: stepper
+    description: Hybrid stepper motors with a NEMA 17 face, in several body lengths.
+  - id: nema14_stepper
+    label: NEMA 14 stepper
+    kind: stepper
+    description: Hybrid stepper motors with a NEMA 14 face.
+  - id: geared_stepper_28byj48
+    label: 28BYJ-48 geared stepper
+    kind: stepper
+    description: Small unipolar geared stepper sold as 28BYJ-48.
+  - id: n20_gearmotor
+    label: N20 gearmotor
+    kind: gearmotor
+    description: Micro DC gearmotors in the N20 form factor; ratios vary, the body is shared.
+  - id: tt_gearmotor
+    label: TT gearmotor
+    kind: gearmotor
+    description: Yellow plastic TT-style DC gearmotors common in robot car kits.
+  - id: manual
+    label: Manual
+    kind: manual
+    description: Moved by hand or by another brick; no motor of its own.

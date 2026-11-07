@@ -1,0 +1,34 @@
+# TEST FIXTURE. Not a real brick. A finger that mounts on the fixture gripper.
+id: gripper.fixture_finger
+schema_version: 0.2.0
+updated_at: 2026-11-07
+name: Fixture finger
+category: gripper
+stage: experimental
+summary: Test fixture finger with a two-hole mount.
+functions: [conform_to_shape]
+mdi: { realizes: mech.fixture_finger }
+difficulty: beginner
+params:
+  - name: length_mm
+    type: float
+    unit: mm
+    default: 50
+    range: [30, 80]
+  - name: flexible
+    type: bool
+    default: true
+outputs: [finger]
+ports:
+  - name: mount
+    type: finger_mount_m3_pair
+    gender: male
+    params: { spacing_mm: 10 }
+    frame: { origin_mm: [0, 0, 0], z_axis: [0, 0, -1], x_axis: [1, 0, 0] }
+pairs_well_with: [gripper.fixture_parallel_jaw]
+visuals:
+  hero_params: [length_mm]
+provenance:
+  origin: adapted
+  authors: ["Junkyard contributors"]
+  inspired_by: ["https://example.org/fixture-reference-design"]

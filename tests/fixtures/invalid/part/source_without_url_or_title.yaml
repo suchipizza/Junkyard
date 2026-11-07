@@ -1,0 +1,12 @@
+# expect: a source needs at least a url or a title
+id: part.servo.fixture_bad
+schema_version: 0.2.0
+updated_at: '2026-11-07'
+name: Fixture servo (fictional)
+class: hobby_servo_9g
+specs:
+  body_l_mm:
+    value: 1
+    source:
+      kind: datasheet
+    verification: unverified

@@ -1,0 +1,34 @@
+# Brick categories (PRD 5.6). The first part of every brick id.
+schema_version: 0.2.0
+updated_at: 2026-11-07
+categories:
+  - id: joint
+    label: Joints
+    description: Pivots, hinges, slides and flexures that let parts move relative to each other.
+  - id: motor
+    label: Motor interfaces
+    description: Mounts, brackets, horn adapters and couplers that connect actuators to the robot.
+  - id: gripper
+    label: Grippers
+    description: Jaws, fingers and hands that hold objects.
+  - id: gear
+    label: Gears and reducers
+    description: Gear pairs and reducers that change speed and torque.
+  - id: linear
+    label: Linear motion
+    description: Stages, carriages and lifts that move parts in a straight line.
+  - id: linkage
+    label: Linkages
+    description: Bar linkages that convert or shape motion.
+  - id: lock
+    label: Locks and indexing
+    description: Ratchets, latches, detents and indexers that hold or step motion.
+  - id: transmission
+    label: Transmission
+    description: Pulleys, tensioners, tendon guides and cable carriers.
+  - id: structure
+    label: Structure
+    description: Plates, brackets and standoffs that form the frame.
+  - id: wheel
+    label: Wheels
+    description: Driven wheels and casters for mobile robots.

@@ -1,0 +1,11 @@
+# TEST FIXTURE. A mechanism with no brick yet (feeds the "wanted" list).
+id: mech.fixture_suction
+schema_version: 0.2.0
+updated_at: 2026-11-07
+entity_type: mechanism_pattern
+canonical_name: Fixture suction gripper
+families: [F12]
+functions: [grip_suction]
+summary: Fixture summary.
+realized_by:
+  - { kind: none }

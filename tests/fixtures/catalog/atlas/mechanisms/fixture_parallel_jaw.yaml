@@ -1,0 +1,23 @@
+# TEST FIXTURE. Not a reviewed Atlas record.
+id: mech.fixture_parallel_jaw
+schema_version: 0.2.0
+updated_at: 2026-11-07
+entity_type: mechanism_pattern
+canonical_name: Fixture parallel jaw gripper
+aliases: [fixture jaws]
+families: [F12, F06]
+functions: [grip_parallel]
+input_motion: [rotation]
+output_motion: [translation]
+summary: Fixture summary.
+strengths: [Fixture strength.]
+watch_outs: [Fixture watch-out.]
+alternatives:
+  - target: mech.fixture_suction
+    context: picking smooth flat objects
+    tradeoffs: [Fixture trade-off.]
+realized_by:
+  - { kind: brick, id: gripper.fixture_parallel_jaw }
+sources:
+  - { kind: web, title: Fixture source, url: "https://example.org/fixture-source" }
+review_status: draft

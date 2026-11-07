@@ -1,0 +1,11 @@
+# expect: part id must look like
+id: servo.sg90
+schema_version: 0.2.0
+updated_at: '2026-11-07'
+name: Fixture servo (fictional)
+class: hobby_servo_9g
+specs:
+  body_l_mm:
+    value: null
+    source: null
+    verification: unverified

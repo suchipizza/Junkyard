@@ -1,0 +1,10 @@
+# Materials (PRD 5.6): names and process only. No property values in v1.
+schema_version: 0.2.0
+updated_at: 2026-11-07
+materials:
+  - { id: PLA, label: PLA, process: fdm }
+  - { id: PETG, label: PETG, process: fdm }
+  - { id: TPU95A, label: TPU 95A, process: fdm }
+  - { id: ABS, label: ABS, process: fdm }
+  - { id: ASA, label: ASA, process: fdm }
+  - { id: Nylon, label: Nylon, process: fdm }
