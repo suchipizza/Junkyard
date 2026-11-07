@@ -1,0 +1,440 @@
+# Function vocabulary (PRD 5.6). What a brick or mechanism does, phrased as a
+# physical job. Aliases are the natural phrases agents and people use; each
+# alias resolves to exactly one function. Definitions are original text.
+schema_version: 0.2.0
+updated_at: 2026-11-07
+functions:
+  # --- grip ------------------------------------------------------------------
+  - id: grip
+    label: Grip an object
+    definition: Hold an object between two or more contact surfaces so it can be lifted, moved or released.
+    aliases: [gripper, grab something, pick up an object, end effector, hold an object]
+  - id: grip_parallel
+    label: Parallel grip
+    definition: Close two jaws whose contact faces stay parallel through the stroke, so the grip point does not shift with object size.
+    aliases: [parallel gripper, two-finger gripper, parallel jaws, pinch a flat object]
+    parent: grip
+  - id: grip_angular
+    label: Angular grip
+    definition: Close jaws that pivot about fixed axes, so the jaw faces change angle as they close.
+    aliases: [claw, pincer, angular gripper, jaws that pivot]
+    parent: grip
+  - id: grip_fragile_irregular
+    label: Grip fragile or irregular objects
+    definition: Hold delicate or oddly shaped objects with low, spread-out contact pressure so they are not crushed or dropped.
+    aliases: [pick up a grape, soft grip, hold an egg, grab fragile things, gentle gripper, pick up fruit]
+    parent: grip
+  - id: grip_adaptive_underactuated
+    label: Adaptive underactuated grip
+    definition: Wrap several finger segments around an object's shape using fewer actuators than joints.
+    aliases: [fingers that wrap around, underactuated hand, tendon finger, adaptive finger]
+    parent: grip
+  - id: grip_three_point
+    label: Three-point centering grip
+    definition: Grip with three contacts spaced around an object so round parts self-center.
+    aliases: [three finger gripper, grab a ball, center a round object, three-jaw chuck]
+    parent: grip
+  - id: grip_pad_contact
+    label: Grip contact pad
+    definition: Provide a soft or high-friction contact surface on a jaw or fingertip.
+    aliases: [rubber jaw pad, grippy fingertip, soft jaw insert, non-slip pad]
+    parent: grip
+  - id: grip_suction
+    label: Suction grip
+    definition: Hold a smooth object by lowering air pressure under a sealed cup.
+    aliases: [suction cup, vacuum gripper, pick up with suction]
+    parent: grip
+
+  # --- rotate ----------------------------------------------------------------
+  - id: rotate
+    label: Rotation
+    definition: Produce, allow or guide rotation of one part relative to another.
+    aliases: [rotate, turn, spin, rotation]
+  - id: rotary_joint_limited
+    label: Limited-angle rotary joint
+    definition: Let one part pivot relative to another over a bounded angle.
+    aliases: [hinge, pivot, elbow joint, pin joint]
+    parent: rotate
+  - id: rotary_joint_continuous
+    label: Continuous rotary joint
+    definition: Let a part rotate without an angle limit about a fixed axis.
+    aliases: [free-spinning shaft, axle, spins all the way around, continuous rotation]
+    parent: rotate
+  - id: rotary_support_bearing
+    label: Bearing-supported rotation
+    definition: Carry a rotating shaft or hub on a rolling-element bearing to reduce friction and play.
+    aliases: [bearing housing, support a shaft with a bearing, bearing joint, ball bearing pivot]
+    parent: rotate
+  - id: rotary_large_diameter_bearing
+    label: Large-diameter rotary bearing
+    definition: Support a rotating platform on a ring bearing with a large central opening.
+    aliases: [turntable, lazy susan, rotating base, slewing ring]
+    parent: rotate
+  - id: limited_angle_rotary_guidance
+    label: Flexure rotary guidance
+    definition: Guide a limited rotation through elastic bending instead of sliding or rolling contact.
+    aliases: [flexure pivot, bearingless pivot, cross-axis flexure, compliant pivot]
+    parent: rotate
+  - id: reduce_joint_backlash
+    label: Reduce joint backlash
+    definition: Remove or minimize free play in a joint so the output follows the input without dead band.
+    aliases: [no wobble joint, zero backlash joint, remove play, tight joint]
+    parent: rotate
+  - id: spherical_joint
+    label: Spherical joint
+    definition: Allow rotation about all three axes through a common center point.
+    aliases: [ball joint, ball and socket, moves in all directions]
+    parent: rotate
+  - id: fold_hinge_compliant
+    label: Compliant fold hinge
+    definition: Bend a thin printed section so two parts fold relative to each other without a separate pin.
+    aliases: [living hinge, print-in-place hinge, flexible hinge, folding lid hinge]
+    parent: rotate
+
+  # --- translate -------------------------------------------------------------
+  - id: translate
+    label: Linear motion
+    definition: Produce, allow or guide straight-line motion of one part relative to another.
+    aliases: [move in a straight line, translate, linear motion]
+  - id: linear_actuation
+    label: Linear actuation
+    definition: Drive a part along a straight line from a motor or other actuator.
+    aliases: [push and pull, linear actuator, drive in a straight line]
+    parent: translate
+  - id: linear_actuation_vertical
+    label: Vertical linear actuation
+    definition: Raise and lower a part along a vertical axis, usually against gravity.
+    aliases: [make it go up and down, lift something, raise and lower, z axis]
+    parent: linear_actuation
+  - id: linear_actuation_horizontal
+    label: Horizontal linear actuation
+    definition: Move a carriage back and forth along a horizontal axis.
+    aliases: [slide left and right, move along a rail, x axis, gantry axis]
+    parent: linear_actuation
+  - id: linear_guidance
+    label: Linear guidance
+    definition: Constrain a part to slide along one straight axis without driving it.
+    aliases: [linear rail, drawer slide, dovetail slide, sliding guide]
+    parent: translate
+  - id: lift_platform
+    label: Platform lift
+    definition: Raise a flat platform while keeping it level, often with a large ratio of height change to collapsed size.
+    aliases: [scissor lift, elevate a platform, lifting table]
+    parent: translate
+
+  # --- position (multi-axis) -------------------------------------------------
+  - id: position
+    label: Positioning
+    definition: Place or orient an end part in space using one or more coordinated axes.
+    aliases: [position something, point at something, orient a part]
+  - id: pan_tilt
+    label: Pan and tilt
+    definition: Aim a part about two perpendicular axes, one horizontal sweep and one vertical tilt.
+    aliases: [pan and tilt, camera gimbal, look left right up down, servo turret]
+    parent: position
+  - id: arm_segment
+    label: Arm segment
+    definition: Form one rigid link of a serial robot arm between two joints.
+    aliases: [robot arm link, arm segment, arm link]
+    parent: position
+  - id: arm_parallel_linkage
+    label: Parallelogram arm
+    definition: Keep an arm's end orientation constant while it moves, using a parallelogram linkage.
+    aliases: [keep the end level, parallelogram arm, parallel link arm]
+    parent: position
+  - id: multi_dof_platform
+    label: Multi-axis platform
+    definition: Move a platform in several degrees of freedom using parallel legs.
+    aliases: [stewart platform, hexapod platform, tilt a platform in all directions]
+    parent: position
+  - id: parallel_delta
+    label: Delta positioning
+    definition: Translate an end platform quickly in three axes with three parallel arms while keeping it level.
+    aliases: [delta robot, fast pick and place, delta arm]
+    parent: position
+  - id: precision_positioning
+    label: Precision positioning
+    definition: Move a part in very small, repeatable steps with little parasitic motion.
+    aliases: [fine positioning, precise xy stage, micro positioning]
+    parent: position
+
+  # --- transmit --------------------------------------------------------------
+  - id: transmit
+    label: Transmit motion
+    definition: Carry motion or torque from an input member to an output member.
+    aliases: [transmission, drive train, transfer motion]
+  - id: reduce_speed_increase_torque
+    label: Speed reduction
+    definition: Lower output speed and raise output torque by a fixed ratio.
+    aliases: [gearbox, speed reducer, more torque, slow it down, gear reduction]
+    parent: transmit
+  - id: high_ratio_reduction
+    label: High-ratio reduction
+    definition: Reach a large reduction ratio in one compact stage.
+    aliases: [big reduction, very high gear ratio, cycloidal drive, harmonic drive, strain wave gear]
+    parent: reduce_speed_increase_torque
+  - id: transmit_backlash_free
+    label: Backlash-free transmission
+    definition: Transmit rotation with little or no backlash, for example with a tensioned cable instead of gear teeth.
+    aliases: [zero backlash gearbox, capstan drive, cable reduction]
+    parent: transmit
+  - id: transmit_parallel_shafts
+    label: Parallel-shaft drive
+    definition: Transfer rotation between two parallel shafts.
+    aliases: [spur gears, connect two parallel shafts, gear pair]
+    parent: transmit
+  - id: transmit_right_angle
+    label: Right-angle drive
+    definition: Transfer rotation between shafts whose axes meet or cross at an angle, usually 90°.
+    aliases: [turn the corner, 90 degree drive, bevel gears, right angle gearbox]
+    parent: transmit
+  - id: transmit_angled_shafts
+    label: Angled-shaft coupling
+    definition: Transfer rotation between shafts whose angle can change during motion.
+    aliases: [u-joint, cardan joint, universal joint]
+    parent: transmit
+  - id: transmit_belt
+    label: Belt drive
+    definition: Transfer rotation or linear motion through a toothed or smooth belt over pulleys.
+    aliases: [timing belt, belt drive, gt2 pulley, belt and pulley]
+    parent: transmit
+  - id: transmit_cable_tendon
+    label: Cable or tendon drive
+    definition: Transmit pulling force through a flexible cable or tendon routed from actuator to joint.
+    aliases: [pull with a string, tendon drive, cable drive, string actuated]
+    parent: transmit
+  - id: couple_shafts
+    label: Shaft coupling
+    definition: Join two coaxial shafts so they rotate together.
+    aliases: [shaft coupler, connect motor shaft to rod, rigid coupler]
+    parent: transmit
+  - id: couple_shafts_misaligned
+    label: Misalignment-tolerant coupling
+    definition: Join two shafts that are slightly offset or angled while still transmitting rotation.
+    aliases: [oldham coupling, flexible coupler, misaligned shafts]
+    parent: couple_shafts
+  - id: self_locking_drive
+    label: Self-locking drive
+    definition: Transmit motion from input to output while resisting being driven backwards from the output.
+    aliases: [worm gear, holds position when power is off, non-backdrivable drive]
+    parent: transmit
+  - id: distribute_load
+    label: Load distribution
+    definition: Split one input force between several outputs so each carries a share.
+    aliases: [whiffletree, share force between fingers, load sharing]
+    parent: transmit
+
+  # --- convert motion --------------------------------------------------------
+  - id: convert_motion
+    label: Convert motion
+    definition: Change one kind of motion into another, such as rotation into translation.
+    aliases: [motion converter, change the kind of motion]
+  - id: rotary_to_linear
+    label: Rotary to linear
+    definition: Turn rotation of an input shaft into straight-line motion of an output.
+    aliases: [turn rotation into straight motion, rack and pinion, lead screw, leadscrew drive]
+    parent: convert_motion
+  - id: rotary_to_reciprocating
+    label: Rotary to reciprocating
+    definition: Turn continuous rotation into back-and-forth straight-line motion.
+    aliases: [back and forth from a motor, slider crank, piston motion]
+    parent: convert_motion
+  - id: rotary_to_oscillating
+    label: Rotary to oscillating
+    definition: Turn continuous rotation into a rocking motion over a limited angle.
+    aliases: [rocking motion, wiper motion, crank rocker]
+    parent: convert_motion
+  - id: cam_profile_motion
+    label: Cam-defined motion
+    definition: Produce a follower motion whose timing and travel are set by the shape of a cam.
+    aliases: [cam and follower, custom motion profile, cam drive]
+    parent: convert_motion
+  - id: motion_amplification
+    label: Motion scaling
+    definition: Scale an input displacement up or down at the output by a fixed geometric ratio.
+    aliases: [amplify motion, pantograph, scale a movement]
+    parent: convert_motion
+  - id: path_generation
+    label: Path generation
+    definition: Move a point along a specific curve set by linkage geometry.
+    aliases: [trace a curve, coupler curve, follow a path]
+    parent: convert_motion
+
+  # --- hold / lock -----------------------------------------------------------
+  - id: hold_position
+    label: Hold or lock
+    definition: Keep a part in place against load, either continuously or at chosen positions.
+    aliases: [lock in place, hold position, keep it from moving]
+  - id: lock_one_way
+    label: One-way lock
+    definition: Allow motion in one direction and block it in the other using a pawl on teeth.
+    aliases: [ratchet, only turn one way, stop it slipping back, ratchet and pawl]
+    parent: hold_position
+  - id: one_way_clutch
+    label: One-way clutch
+    definition: Transmit torque in one direction and freewheel in the other without discrete steps.
+    aliases: [sprag clutch, freewheel, overrunning clutch]
+    parent: hold_position
+  - id: lock_over_center
+    label: Over-center lock
+    definition: Lock a linkage by pushing it just past a straight, aligned position so load holds it closed.
+    aliases: [toggle latch, snap shut and stay closed, toggle clamp, over center latch]
+    parent: hold_position
+  - id: detent_positions
+    label: Detent positions
+    definition: Hold a moving part at preferred positions with a spring-loaded or flexing catch.
+    aliases: [click into positions, detent, notched stops]
+    parent: hold_position
+
+  # --- index -----------------------------------------------------------------
+  - id: index_intermittent_rotation
+    label: Intermittent indexing
+    definition: Turn continuous input rotation into output rotation in discrete steps with dwell between them.
+    aliases: [geneva drive, step a turntable, rotate in steps, indexing wheel]
+    parent: convert_motion
+
+  # --- mount -----------------------------------------------------------------
+  - id: mount
+    label: Mount a component
+    definition: Attach an actuator or purchased component to the robot's structure at a known position.
+    aliases: [motor mount, bracket for a component, mount something]
+  - id: mount_servo
+    label: Servo mount
+    definition: Hold a hobby servo body by its mounting tabs and locate its output axis.
+    aliases: [hold a servo, servo bracket, attach an sg90, servo holder]
+    parent: mount
+  - id: mount_servo_horn
+    label: Servo horn attachment
+    definition: Connect a printed part to a servo's output spline or horn.
+    aliases: [attach to servo horn, connect a part to the servo output, horn adapter]
+    parent: mount
+  - id: mount_stepper
+    label: Stepper mount
+    definition: Hold a stepper motor by its face bolt pattern and locate its shaft.
+    aliases: [nema 17 mount, stepper bracket, stepper motor holder]
+    parent: mount
+  - id: mount_gearmotor_small
+    label: Small gearmotor mount
+    definition: Hold a small DC gearmotor such as an N20 or TT motor and locate its output shaft.
+    aliases: [n20 mount, tt motor mount, geared motor holder]
+    parent: mount
+  - id: mount_finger
+    label: Finger attachment
+    definition: Provide a standard interface where interchangeable fingers or jaws attach.
+    aliases: [attach a finger, swap gripper fingers, finger mount]
+    parent: mount
+  - id: mount_to_extrusion
+    label: Extrusion mount
+    definition: Attach a part to an aluminum T-slot extrusion.
+    aliases: [2020 bracket, attach to aluminum profile, t-slot mount]
+    parent: mount
+
+  # --- structure -------------------------------------------------------------
+  - id: structure
+    label: Structure
+    definition: Form the frame that other parts mount to and that carries loads between them.
+    aliases: [frame, chassis, robot structure]
+  - id: structure_plate
+    label: Mounting plate
+    definition: Provide a flat plate with a regular hole pattern for mounting parts.
+    aliases: [base plate, mounting plate with holes, breadboard plate, grid plate]
+    parent: structure
+  - id: structure_spacer
+    label: Spacer
+    definition: Hold two parts a fixed distance apart along a screw axis.
+    aliases: [standoff, spacer, raise a board]
+    parent: structure
+  - id: structure_bracket
+    label: Bracket
+    definition: Join two structural members at an angle, typically 90°.
+    aliases: [corner bracket, l bracket, angle bracket]
+    parent: structure
+
+  # --- locomote --------------------------------------------------------------
+  - id: locomote
+    label: Locomotion
+    definition: Move the whole robot over the ground.
+    aliases: [make it move around, mobile robot, drive around]
+  - id: wheel_drive
+    label: Wheel drive
+    definition: Roll the robot on a driven wheel attached to a motor output.
+    aliases: [drive wheel, make it roll, robot wheel]
+    parent: locomote
+  - id: caster_support
+    label: Caster support
+    definition: Support part of the robot's weight on a free-rolling contact that turns in any direction.
+    aliases: [ball caster, third wheel, free-rolling support]
+    parent: locomote
+  - id: walking_leg
+    label: Walking leg
+    definition: Move a foot through a stepping path, usually from continuous crank rotation.
+    aliases: [walking leg, legged robot, strandbeest leg, walking linkage]
+    parent: locomote
+  - id: omnidirectional_drive
+    label: Omnidirectional drive
+    definition: Drive the robot in any planar direction without turning first.
+    aliases: [mecanum wheel, omni wheel, drive sideways]
+    parent: locomote
+
+  # --- comply ----------------------------------------------------------------
+  - id: comply
+    label: Intentional compliance
+    definition: Use elastic deformation of a part as a working feature rather than a defect.
+    aliases: [compliant mechanism, flexure, flexible part]
+  - id: conform_to_shape
+    label: Conform to shape
+    definition: Bend locally around an object under contact so the contact area grows.
+    aliases: [fin ray, finger that bends around objects, shape-conforming finger]
+    parent: comply
+  - id: store_energy_spring
+    label: Spring return
+    definition: Store energy elastically and release it to return a part to a rest position.
+    aliases: [spring return, snap back, spring loaded]
+    parent: comply
+  - id: soft_bending_actuation
+    label: Soft bending actuation
+    definition: Bend a soft body by inflating internal chambers or pulling embedded tendons.
+    aliases: [soft pneumatic finger, inflatable gripper, soft actuator]
+    parent: comply
+  - id: deploy_expand
+    label: Deploy or expand
+    definition: Change between a compact folded shape and a larger expanded shape.
+    aliases: [expand and collapse, hoberman sphere, unfold a structure]
+    parent: comply
+
+  # --- route -----------------------------------------------------------------
+  - id: route
+    label: Route cables and belts
+    definition: Guide flexible members such as belts, tendons or wires along a defined path.
+    aliases: [routing, guide a cable, cable routing]
+  - id: route_tendon
+    label: Tendon guide
+    definition: Guide a tendon or cable around a bend with low friction and no snagging.
+    aliases: [guide a string, tendon guide, cable guide]
+    parent: route
+  - id: cable_management
+    label: Cable management
+    definition: Carry moving wires along an axis so they bend at a controlled radius.
+    aliases: [cable chain, drag chain, keep wires tidy]
+    parent: route
+  - id: clamp_belt
+    label: Belt clamp
+    definition: Fix the end of a toothed belt to a carriage.
+    aliases: [belt clamp, attach a belt to a carriage, belt anchor]
+    parent: route
+  - id: tension_belt
+    label: Belt tensioning
+    definition: Adjust and hold the tension of a belt loop.
+    aliases: [belt tensioner, tighten the belt]
+    parent: route
+  - id: redirect_belt_idler
+    label: Idler
+    definition: Redirect or support a belt on a free-spinning pulley.
+    aliases: [idler pulley, guide the belt around]
+    parent: route
+
+  # --- align -----------------------------------------------------------------
+  - id: passive_alignment
+    label: Passive alignment
+    definition: Let a part shift or tilt slightly under contact so it aligns itself during insertion or docking.
+    aliases: [self centering, peg in hole compliance, docking alignment, remote center compliance]

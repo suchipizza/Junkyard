@@ -1,0 +1,114 @@
+# Port types (PRD 5.3). Ports are for discovery ("what mounts on this?") and
+# for assembly export. They are not used for verification.
+#
+# params: typed parameters a port of this type may carry. Types: int, float,
+#   bool, str, actuator_class, enum[A,B,...]. Float params carry units in names.
+# mates_with: port types this one mates with (empty = same type only).
+# gender_rule: opposite (male<->female), same, or any.
+# match_keys: params that must agree for a match (exact on enums/ints/str,
+#   ±0.1 mm on floats). Empty = the type alone is enough.
+#
+# This file declares parameter names and types only. It holds no dimensions;
+# values come from part records (sourced) or brick params.
+schema_version: 0.2.0
+updated_at: 2026-11-07
+ports:
+  - type: servo_horn_spline
+    description: Servo output spline, or a bore that fits onto one.
+    params: { spline_teeth: int, spline_od_mm: float }
+    mates_with: servo_horn_spline
+    gender_rule: opposite
+    match_keys: [spline_teeth]
+
+  - type: servo_body_mount
+    description: Hobby servo body held by its mounting tabs.
+    params:
+      servo_class: actuator_class
+      body_l_mm: float
+      body_w_mm: float
+      tab_hole_pitch_mm: float
+      tab_hole_d_mm: float
+    gender_rule: opposite
+    match_keys: [servo_class]
+
+  - type: nema17_face
+    description: Front face of a NEMA 17 stepper (bolt pattern, pilot boss and shaft), or a plate that bolts to it.
+    params: {}
+    gender_rule: opposite
+    match_keys: []
+
+  - type: nema14_face
+    description: Front face of a NEMA 14 stepper, or a plate that bolts to it.
+    params: {}
+    gender_rule: opposite
+    match_keys: []
+
+  - type: n20_face
+    description: Gearbox face and output shaft of an N20 gearmotor, or a clamp that holds it.
+    params: {}
+    gender_rule: opposite
+    match_keys: []
+
+  - type: shaft_round
+    description: Plain round shaft (male) or bore that receives it (female).
+    params: { diameter_mm: float, length_mm: float }
+    gender_rule: opposite
+    match_keys: [diameter_mm]
+
+  - type: shaft_d
+    description: D-profile shaft with one flat (male) or matching bore (female).
+    params: { diameter_mm: float, flat_depth_mm: float }
+    gender_rule: opposite
+    match_keys: [diameter_mm]
+
+  - type: bearing_seat
+    description: Outer race of a bearing (male) or the pocket it presses into (female).
+    params: { od_mm: float, width_mm: float }
+    gender_rule: opposite
+    match_keys: [od_mm, width_mm]
+
+  - type: bolt_pattern
+    description: Pattern of screw holes; two patterns bolt together when they agree.
+    params:
+      screw: enum[M2,M2.5,M3,M4,M5]
+      count: int
+      pitch_x_mm: float
+      pitch_y_mm: float
+    gender_rule: any
+    match_keys: [screw, count, pitch_x_mm, pitch_y_mm]
+
+  - type: finger_mount_m3_pair
+    description: Two M3 holes that interchangeable fingers or jaws bolt onto.
+    params: { spacing_mm: float }
+    gender_rule: opposite
+    match_keys: [spacing_mm]
+
+  - type: pin_bore
+    description: Pin (male) or bore for a pin (female), for pivots and dowels.
+    params: { diameter_mm: float }
+    gender_rule: opposite
+    match_keys: [diameter_mm]
+
+  - type: gt2_belt_clamp
+    description: GT2 belt end (male) or the toothed clamp that anchors it (female).
+    params: { belt_width_mm: float }
+    gender_rule: opposite
+    match_keys: [belt_width_mm]
+
+  - type: extrusion_2020_slot
+    description: T-slot of a 2020 aluminum extrusion, or a part that fastens into it.
+    params: {}
+    gender_rule: opposite
+    match_keys: []
+
+  - type: rod_8mm
+    description: 8 mm smooth rod (male) or a clamp, bushing or bearing that receives it (female).
+    params: {}
+    gender_rule: opposite
+    match_keys: []
+
+  - type: leadscrew_t8_nut
+    description: T8 lead screw nut flange (male) or the carriage seat that holds it (female).
+    params: {}
+    gender_rule: opposite
+    match_keys: []
