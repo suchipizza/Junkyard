@@ -1,0 +1,43 @@
+# CI: code quality only (PRD section 12). No physical verification.
+#
+# M1 covers items 1, 2 and 7 (lint, tests, YAML validation, schema drift,
+# invariant tests). Later milestones add:
+#   - generator runs at defaults and range edges, geometry snapshots (M2)
+#   - provenance gate and README headings over real bricks (already enforced by
+#     the loader, exercised once bricks exist in M2-M3)
+#   - web build, link check, Lighthouse (M5)
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    name: Python ${{ matrix.python }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    env:
+      UV_PYTHON: ${{ matrix.python }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Install
+        run: uv sync --locked
+      - name: Lint
+        run: uv run ruff check .
+      - name: Format
+        run: uv run ruff format --check .
+      - name: Schemas are up to date
+        run: uv run python -m junkyard.models.export --check
+      - name: Catalog loads (YAML validates, refs resolve)
+        run: uv run python -c "from junkyard.registry import load_registry; load_registry()"
+      - name: Tests (including invariants)
+        run: uv run pytest
